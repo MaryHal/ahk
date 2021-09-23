@@ -13,7 +13,6 @@ Pause::Send ^w
   reload
 return
 
-#Persistent
 SetCapsLockState, AlwaysOff
 
 Capslock & Space::
