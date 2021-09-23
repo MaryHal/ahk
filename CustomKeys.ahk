@@ -4,6 +4,11 @@
 $ScrollLock::Suspend
 
 Pause::Send ^w
+!Pause::
+  TrayTip, CustomKeys - Reloading,..., 1.5,
+  Sleep, 1500
+  reload
+return
 
 #Persistent
 SetCapsLockState, AlwaysOff
