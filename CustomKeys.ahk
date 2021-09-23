@@ -16,11 +16,11 @@ return
 SetCapsLockState, AlwaysOff
 
 Capslock & Space::
-  If GetKeyState("CapsLock", "T") = 1
+  if GetKeyState("CapsLock", "T") = 1
       SetCapsLockState, AlwaysOff
-  Else
+  else
       SetCapsLockState, AlwaysOn
-Return
+return
 
 CapsLock::Send, {ESC}
 
@@ -69,9 +69,9 @@ return
 
 ToggleWindow(key) {
   WinGet, WindowState, MinMax, %key%
-  If WindowState = -1
+  if WindowState = -1
       WinActivate, %key%
-  Else
+  else
       WinMinimize, %key%
   return
 }
