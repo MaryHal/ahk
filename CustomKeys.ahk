@@ -9,10 +9,10 @@ Pause::Send ^w
 SetCapsLockState, AlwaysOff
 
 Capslock & Space::
-If GetKeyState("CapsLock", "T") = 1
-    SetCapsLockState, AlwaysOff
-Else 
-    SetCapsLockState, AlwaysOn
+  If GetKeyState("CapsLock", "T") = 1
+      SetCapsLockState, AlwaysOff
+  Else
+      SetCapsLockState, AlwaysOn
 Return
 
 CapsLock::Send, {ESC}
