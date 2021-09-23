@@ -1,5 +1,6 @@
 #NoEnv
 #SingleInstance force
+Menu, Tray, Icon, %A_ScriptDir%\icons\CustomKeys.ico
 
 ;; #Win !Alt ^Ctrl +Shift
 
