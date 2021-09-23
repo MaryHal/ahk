@@ -1,6 +1,8 @@
 #NoEnv
 #SingleInstance force
 
+;; #Win !Alt ^Ctrl +Shift
+
 $ScrollLock::Suspend
 
 Pause::Send ^w
