@@ -50,6 +50,7 @@ Capslock & p::SendInput #!^{p}
 pid1 := 0
 #!^f::
   WinGet, pid1, PID, A
+  TrayTip, CustomKeys, Marked f Window, 2,
 return
 
 Capslock & f::
