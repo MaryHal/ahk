@@ -44,7 +44,18 @@ Capslock & SC02B::
 return
 
 Capslock & o::SendInput #!^{o}
+Capslock & u::SendInput #!^{Space}
 Capslock & p::SendInput #!^{p}
+
+pid1 := 0
+#!^f::
+  WinGet, pid1, PID, A
+return
+
+Capslock & f::
+  key = ahk_pid %pid1%
+  ToggleWindow(key)
+return
 
 ToggleWindow(key) {
   WinGet, WindowState, MinMax, %key%
