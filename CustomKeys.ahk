@@ -50,9 +50,10 @@ Capslock & SC02B::
   ToggleWindow(key)
 return
 
-Capslock & o::SendInput #!^{o}
+Capslock & o::SendInput #!^{/}
 Capslock & u::SendInput #!^{Space}
 Capslock & p::SendInput #!^{p}
+Capslock & s::SendInput #!^{'}
 
 pid1 := 0
 #!^f::
