@@ -50,7 +50,11 @@ Capslock & SC02B::
   ToggleWindow(key)
 return
 
-Capslock & o::SendInput #!^{/}
+Capslock & o::
+  key = ahk_class {97E27FAA-C0B3-4b8e-A693-ED7881E99FC1}
+  ToggleWindow(key)
+return
+
 Capslock & u::SendInput #!^{Space}
 Capslock & p::SendInput #!^{p}
 Capslock & s::SendInput #!^{'}
