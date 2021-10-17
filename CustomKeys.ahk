@@ -60,16 +60,17 @@ Capslock & p::SendInput #!^{p}
 Capslock & s::SendInput #!^{'}
 
 pid1 := 0
-#!^f::
-  WinGet, pid1, PID, A
-  WinGetTitle, windowTitle, ahk_pid %pid1%
-  WinGetClass, windowClass, ahk_pid %pid1%
-  TrayTip, CustomKeys - Marked f Window, `n%windowClass%`n%windowTitle%, 2,
-return
-
 Capslock & f::
-  key = ahk_pid %pid1%
-  ToggleWindow(key)
+  if GetKeyState("LAlt") {
+    WinGet, pid1, PID, A
+    WinGetTitle, windowTitle, ahk_pid %pid1%
+    WinGetClass, windowClass, ahk_pid %pid1%
+    TrayTip, CustomKeys - Marked f Window, `n%windowClass%`n%windowTitle%, 2,
+  }
+  else {
+    key = ahk_pid %pid1%
+    ToggleWindow(key)
+  }
 return
 
 ToggleWindow(key) {
