@@ -74,6 +74,20 @@ Capslock & f::
   }
 return
 
+pid2 := 0
+Capslock & d::
+  if GetKeyState("LAlt") {
+    WinGet, pid2, PID, A
+    WinGetTitle, windowTitle, ahk_pid %pid1%
+    WinGetClass, windowClass, ahk_pid %pid1%
+    TrayTip, CustomKeys - Marked d Window, `n%windowClass%`n%windowTitle%, 2,
+  }
+  else {
+    key = ahk_pid %pid1%
+    ToggleWindow(key)
+  }
+return
+
 ToggleWindow(key) {
   WinGet, WindowState, MinMax, %key%
   if WindowState = -1
