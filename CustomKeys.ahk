@@ -83,7 +83,7 @@ Capslock & d::
     TrayTip, CustomKeys - Marked d Window, `n%windowClass%`n%windowTitle%, 2,
   }
   else {
-    key = ahk_pid %pid1%
+    key = ahk_pid %pid2%
     ToggleWindow(key)
   }
 return
