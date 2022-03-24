@@ -58,6 +58,7 @@ return
 Capslock & u::SendInput #!^{Space}
 Capslock & p::SendInput #!^{p}
 Capslock & s::SendInput #!^{'}
+Capslock & t::SendInput #!^{t}
 
 pid1 := 0
 Capslock & f::
