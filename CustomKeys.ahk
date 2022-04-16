@@ -24,9 +24,12 @@ return
 
 CapsLock::Send, {ESC}
 
-;; Use PowerToys' Always On Top functionality
+;; Use PowerToys' Always On Top functionalityR
 ; Capslock & a::Winset, AlwaysOnTop, , A
 Capslock & a::Send #!^{a}
+
+;; PowerToys Run
+Capslock & r::Send #!^{r}
 
 Capslock & h::Send #{Left}
 Capslock & l::Send #{Right}
