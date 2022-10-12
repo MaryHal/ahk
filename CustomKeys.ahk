@@ -101,11 +101,11 @@ return
 
 ToggleWindow(key) {
   WinGet, WindowState, MinMax, %key%
-  if (WindowState = -1) {
-      Winrestore, %key%
+  if (WindowState >= 0 and WinActive(key)) {
+      WinMinimize, %key%
   }
   else {
-      WinMinimize, %key%
+      WinActivate, %key%
   }
   return
 }
