@@ -1,5 +1,6 @@
 #NoEnv
 #SingleInstance force
+SetTitleMatchMode, RegEx
 Menu, Tray, Icon, %A_ScriptDir%\icons\CustomKeys.ico
 
 ;; #Win !Alt ^Ctrl +Shift
@@ -40,7 +41,7 @@ Capslock & w::Send #+{Left}
 Capslock & e::Send #+{Right}
 
 Capslock & m::
-  key = ahk_exe Emacs.exe
+  key = Doom Emacs$
   ToggleWindow(key)
 return
 
@@ -55,6 +56,11 @@ Capslock & SC02B::
   ToggleWindow(key)
 return
 
+Capslock & c::
+  WinGet, id, ID, ahk_exe alacritty.exe
+  ToggleWindow(id)
+return
+
 Capslock & o::
   key = ahk_class {97E27FAA-C0B3-4b8e-A693-ED7881E99FC1}
   ToggleWindow(key)
@@ -63,41 +69,43 @@ return
 Capslock & u::SendInput #!^{Space}
 Capslock & p::SendInput #!^{p}
 Capslock & s::SendInput #!^{'}
-Capslock & t::SendInput #!^{t}
+Capslock & t::SendInput #!^{q}
 
-pid1 := 0
+id1 := 0
 Capslock & f::
   if GetKeyState("LAlt") {
-    WinGet, pid1, PID, A
-    WinGetTitle, windowTitle, ahk_pid %pid1%
-    WinGetClass, windowClass, ahk_pid %pid1%
+    WinGet, id1, ID, A
+    WinGetTitle, windowTitle, ahk_id %id1%
+    WinGetClass, windowClass, ahk_id %id1%
     TrayTip, CustomKeys - Marked f Window, `n%windowClass%`n%windowTitle%, 2,
   }
   else {
-    key = ahk_pid %pid1%
+    key = ahk_id %id1%
     ToggleWindow(key)
   }
 return
 
-pid2 := 0
+id2 := 0
 Capslock & d::
   if GetKeyState("LAlt") {
-    WinGet, pid2, PID, A
-    WinGetTitle, windowTitle, ahk_pid %pid1%
-    WinGetClass, windowClass, ahk_pid %pid1%
+    WinGet, id2, ID, A
+    WinGetTitle, windowTitle, ahk_id %id2%
+    WinGetClass, windowClass, ahk_id %id2%
     TrayTip, CustomKeys - Marked d Window, `n%windowClass%`n%windowTitle%, 2,
   }
   else {
-    key = ahk_pid %pid2%
+    key = ahk_id %id2%
     ToggleWindow(key)
   }
 return
 
 ToggleWindow(key) {
   WinGet, WindowState, MinMax, %key%
-  if WindowState = -1
-      WinActivate, %key%
-  else
+  if (WindowState = -1) {
+      Winrestore, %key%
+  }
+  else {
       WinMinimize, %key%
+  }
   return
 }
