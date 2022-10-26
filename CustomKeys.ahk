@@ -41,7 +41,7 @@ Capslock & w::Send #+{Left}
 Capslock & e::Send #+{Right}
 
 Capslock & m::
-  key = Doom Emacs$
+  key = (^emacs -nw|Doom Emacs$)
   ToggleWindow(key)
 return
 
@@ -58,7 +58,8 @@ return
 
 Capslock & c::
   WinGet, id, ID, ahk_exe alacritty.exe
-  ToggleWindow(id)
+  key = ahk_id %id%
+  ToggleWindow(key)
 return
 
 Capslock & o::
