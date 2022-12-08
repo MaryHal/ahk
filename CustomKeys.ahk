@@ -30,6 +30,8 @@ CapsLock::Send, {ESC}
 Capslock & a::Send #!^{a}
 
 ;; PowerToys Run
+Capslock & Enter::Run alacritty.exe,,Hide
+
 Capslock & r::Send #!^{r}
 
 Capslock & h::Send #{Left}
