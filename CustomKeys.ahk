@@ -29,9 +29,9 @@ CapsLock::Send, {ESC}
 ; Capslock & a::Winset, AlwaysOnTop, , A
 Capslock & a::Send #!^{a}
 
-;; PowerToys Run
-Capslock & Enter::Run alacritty.exe,,Hide
+Capslock & Enter::Run, %A_StartMenu%\Programs\Scoop Apps\Wezterm.lnk
 
+;; PowerToys Run
 Capslock & r::Send #!^{r}
 
 Capslock & h::Send #{Left}
