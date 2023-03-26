@@ -14,68 +14,68 @@ Pause::Send ^w
   reload
 return
 
-SetCapsLockState, AlwaysOff
+; SetCapsLockState, AlwaysOff
 
-Capslock & Space::
-  if GetKeyState("CapsLock", "T") = 1
-      SetCapsLockState, AlwaysOff
-  else
-      SetCapsLockState, AlwaysOn
-return
+; #!^+Space::
+;   if GetKeyState("CapsLock", "T") = 1
+;       SetCapsLockState, AlwaysOff
+;   else
+;       SetCapsLockState, AlwaysOn
+; return
 
-CapsLock::Send, {ESC}
+; CapsLock::Send, {ESC}
 
 ;; Use PowerToys' Always On Top functionalityR
-; Capslock & a::Winset, AlwaysOnTop, , A
-Capslock & a::Send #!^{a}
+; #!^+a::Winset, AlwaysOnTop, , A
+#!^+a::Send #!^{a}
 
-Capslock & Enter::Run, %A_StartMenu%\Programs\Scoop Apps\Wezterm.lnk
+#!^+Enter::Run, %A_StartMenu%\Programs\Scoop Apps\Wezterm.lnk
 
 ;; PowerToys Run
-Capslock & r::Send #!^{r}
+#!^+r::Send #!^{r}
 
-Capslock & h::Send #{Left}
-Capslock & l::Send #{Right}
-Capslock & k::Send #{Up}
-Capslock & j::Send #{Down}
+#!^+h::Send #{Left}
+#!^+l::Send #{Right}
+#!^+k::Send #{Up}
+#!^+j::Send #{Down}
 
-Capslock & w::Send #+{Left}
-Capslock & e::Send #+{Right}
+#!^+w::Send #+{Left}
+#!^+e::Send #+{Right}
 
-Capslock & m::
+#!^+m::
   key = (^emacs -nw|Doom Emacs$)
   ToggleWindow(key)
 return
 
-Capslock & i::
+#!^+i::
   key = ahk_exe KeePassXC.exe
   ToggleWindow(key)
 return
 
 ;; Backslash
-Capslock & SC02B::
+#!^+SC02B::
   key = ahk_exe WindowsTerminal.exe
   ToggleWindow(key)
 return
 
-Capslock & c::
+#!^+c::
   WinGet, id, ID, ahk_exe alacritty.exe
   key = ahk_id %id%
   ToggleWindow(key)
 return
 
-Capslock & o::
+#!^+o::
   key = ahk_class {97E27FAA-C0B3-4b8e-A693-ED7881E99FC1}
   ToggleWindow(key)
 return
 
-Capslock & u::SendInput #!^{Space}
-Capslock & p::SendInput #!^{p}
-Capslock & s::SendInput #!^{'}
-Capslock & t::SendInput #!^{q}
+#!^+u::SendInput #!^{Space}
+#!^+p::SendInput #!^{p}
+#!^+s::SendInput #!^{'}
+#!^+t::SendInput +!^{q}
 
 id1 := 0
-Capslock & f::
+#!^+f::
   if GetKeyState("LAlt") {
     WinGet, id1, ID, A
     WinGetTitle, windowTitle, ahk_id %id1%
@@ -89,7 +89,7 @@ Capslock & f::
 return
 
 id2 := 0
-Capslock & d::
+#!^+d::
   if GetKeyState("LAlt") {
     WinGet, id2, ID, A
     WinGetTitle, windowTitle, ahk_id %id2%
@@ -98,6 +98,20 @@ Capslock & d::
   }
   else {
     key = ahk_id %id2%
+    ToggleWindow(key)
+  }
+return
+
+id3 := 0
+#!^+g::
+  if GetKeyState("LAlt") {
+    WinGet, id3, ID, A
+    WinGetTitle, windowTitle, ahk_id %id3%
+    WinGetClass, windowClass, ahk_id %id3%
+    TrayTip, CustomKeys - Marked d Window, `n%windowClass%`n%windowTitle%, 2,
+  }
+  else {
+    key = ahk_id %id3%
     ToggleWindow(key)
   }
 return
